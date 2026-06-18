@@ -9,6 +9,7 @@ import PackagePage from "./pages/ServiceDeatail";
 import Header from "./components/Header";
 import About from "./pages/About";
 import Experience from "./pages/Experience";
+import Projects from "./components/Projects";
 
 const App = () => {
   useEffect(() => {
@@ -27,6 +28,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/services/package" element={<PackagePage />} />
         <Route path="/experience" element={<Experience />} />
+        <Route path="/projects" element={<Projects />} />
 
         <Route path="/about" element={<About />} />
       </Routes>
