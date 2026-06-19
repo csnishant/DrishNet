@@ -3,13 +3,22 @@ import { motion } from "framer-motion";
 import { FiGithub, FiInstagram, FiLinkedin, FiMenu, FiX } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
+const NAV_LINKS = [
+  { label: "Home", path: "/" },
+  { label: "About", path: "/about" },
+  { label: "Projects", path: "/projects" },
+  { label: "Experience", path: "/experience" },
+];
 
-
-
-
-const NAV_LINKS = ["Home", "About", "Projects", "Experience"];
-const SOCIAL_ICONS = [FiGithub, FiLinkedin, FiInstagram];
-const SOCIAL_LABELS = ["GitHub", "LinkedIn", "Instagram"];
+const SOCIAL_LINKS = [
+  { Icon: FiGithub, label: "GitHub", url: "#" },
+  { Icon: FiLinkedin, label: "LinkedIn", url: "#" },
+  {
+    Icon: FiInstagram,
+    label: "Instagram",
+    url: "https://instagram.com/drishnet",
+  },
+];
 
 const Header = () => {
   const [showNavbar, setShowNavbar] = useState(true);
@@ -36,9 +45,9 @@ const Header = () => {
       <header
         style={{
           fontFamily: "'Space Grotesk', sans-serif",
-          background: scrolled ? "rgba(5,11,20,0.85)" : "rgba(5,11,20,0.5)",
+          background: scrolled ? "rgba(5,11,20,0.9)" : "rgba(5,11,20,0.4)",
           borderBottom: scrolled
-            ? "0.5px solid rgba(56,189,248,0.12)"
+            ? "0.5px solid rgba(56,189,248,0.15)"
             : "0.5px solid transparent",
           backdropFilter: "blur(12px)",
           WebkitBackdropFilter: "blur(12px)",
@@ -57,8 +66,7 @@ const Header = () => {
               damping: 25,
               delay: 0.3,
             }}>
-            <Link to="/" className="flex items-center gap-2 no-underline">
-              {/* Animated bracket accent */}
+            <Link to="/" className="flex items-center gap-2 no-underline group">
               <span
                 style={{
                   fontFamily: "'JetBrains Mono', monospace",
@@ -90,28 +98,27 @@ const Header = () => {
           </motion.div>
 
           {/* Desktop Navigation */}
-          <nav className="lg:flex hidden space-x-8">
-            {NAV_LINKS.map((item, index) => (
+          <nav className="hidden lg:flex items-center space-x-8">
+            {NAV_LINKS.map((link, index) => (
               <motion.div
-                key={item}
+                key={link.label}
                 initial={{ opacity: 0, y: -16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
                   type: "spring",
                   stiffness: 100,
                   damping: 20,
-                  delay: 0.6 + index * 0.15,
+                  delay: 0.4 + index * 0.1,
                 }}>
                 <Link
-                  to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
-                  className="nav-underline"
+                  to={link.path}
+                  className="nav-underline relative py-1"
                   style={{
                     color: "#94a3b8",
                     fontSize: 14,
                     fontWeight: 500,
                     textDecoration: "none",
                     transition: "color 0.2s",
-                    paddingBottom: 4,
                   }}
                   onMouseEnter={(e) =>
                     (e.currentTarget.style.color = "#38bdf8")
@@ -119,43 +126,51 @@ const Header = () => {
                   onMouseLeave={(e) =>
                     (e.currentTarget.style.color = "#94a3b8")
                   }>
-                  {item}
+                  {link.label}
                 </Link>
               </motion.div>
             ))}
           </nav>
 
-          {/* Desktop Social + Hire Me */}
-          <div className="md:flex hidden items-center gap-4">
-            {SOCIAL_ICONS.map((Icon, idx) => (
-              <motion.a
-                key={idx}
-                href="#"
-                aria-label={SOCIAL_LABELS[idx]}
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 1.1 + idx * 0.1, duration: 0.5 }}
-                style={{
-                  color: "#475569",
-                  display: "flex",
-                  alignItems: "center",
-                  transition: "color 0.2s",
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "#38bdf8")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "#475569")}>
-                <Icon size={17} />
-              </motion.a>
-            ))}
+          {/* Desktop Social Links + Hire Me Button */}
+          <div className="hidden md:flex items-center gap-5">
+            <div className="flex items-center gap-4">
+              {SOCIAL_LINKS.map(({ Icon, label, url }, idx) => (
+                <motion.a
+                  key={label}
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.8 + idx * 0.1, duration: 0.4 }}
+                  style={{
+                    color: "#475569",
+                    display: "flex",
+                    alignItems: "center",
+                    transition: "color 0.2s",
+                  }}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.color = "#38bdf8")
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.color = "#475569")
+                  }>
+                  <Icon size={17} />
+                </motion.a>
+              ))}
+            </div>
 
             <motion.a
               href="#contact"
               initial={{ opacity: 0, scale: 0.85 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 1.5, duration: 0.5, type: "spring" }}
+              transition={{ delay: 1.2, duration: 0.5, type: "spring" }}
               style={{
-                marginLeft: 8,
-                padding: "8px 20px",
-                borderRadius: 6,
+                marginLeft: 4,
+                padding: "9px 22px",
+                borderRadius: "8px",
                 background: "#38bdf8",
                 color: "#050b14",
                 fontSize: 13,
@@ -166,7 +181,7 @@ const Header = () => {
                 display: "inline-block",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.opacity = "0.85";
+                e.currentTarget.style.opacity = "0.9";
                 e.currentTarget.style.transform = "translateY(-1px)";
               }}
               onMouseLeave={(e) => {
@@ -177,10 +192,10 @@ const Header = () => {
             </motion.a>
           </div>
 
-          {/* Mobile hamburger */}
+          {/* Mobile Hamburger Toggle Button */}
           <div className="md:hidden flex items-center z-[60]">
             <motion.button
-              whileTap={{ scale: 0.75 }}
+              whileTap={{ scale: 0.85 }}
               onClick={toggleMenu}
               aria-label="Toggle menu"
               style={{
@@ -189,7 +204,11 @@ const Header = () => {
                 border: "none",
                 cursor: "pointer",
               }}>
-              {isOpen ? <FiX size={22} /> : <FiMenu size={22} />}
+              {isOpen ? (
+                <FiX size={24} className="text-sky-400" />
+              ) : (
+                <FiMenu size={24} />
+              )}
             </motion.button>
           </div>
         </div>
@@ -199,71 +218,70 @@ const Header = () => {
       <motion.div
         initial={{ x: "100%" }}
         animate={{ x: isOpen ? "0%" : "100%" }}
-        transition={{ type: "spring", stiffness: 120, damping: 20 }}
+        transition={{ type: "spring", stiffness: 140, damping: 22 }}
         style={{
           fontFamily: "'Space Grotesk', sans-serif",
           position: "fixed",
           top: 0,
           right: 0,
           height: "100%",
-          width: 280,
-          background: "rgba(5,11,20,0.96)",
+          width: 290,
+          background: "rgba(5,11,20,0.98)",
           backdropFilter: "blur(20px)",
           WebkitBackdropFilter: "blur(20px)",
           borderLeft: "0.5px solid rgba(56,189,248,0.15)",
           zIndex: 40,
-          padding: "24px 20px",
+          padding: "32px 24px",
           display: "flex",
           flexDirection: "column",
-          gap: 0,
         }}
         className="md:hidden">
-        {/* Sidebar logo */}
-        <div style={{ marginBottom: 32, marginTop: 40 }}>
+        {/* Sidebar Header Indicator */}
+        <div style={{ marginBottom: 28, marginTop: 40 }}>
           <span
             style={{
               fontFamily: "'JetBrains Mono', monospace",
-              fontSize: 11,
+              fontSize: 10,
               color: "#38bdf8",
               letterSpacing: 2,
               textTransform: "uppercase",
               opacity: 0.6,
             }}>
-            Navigation
+            Navigation Matrix
           </span>
         </div>
 
-        {/* Nav links */}
-        <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
-          {NAV_LINKS.map((item, index) => (
-            <React.Fragment key={item}>
+        {/* Sidebar Dynamic Route Links */}
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          {NAV_LINKS.map((link, index) => (
+            <React.Fragment key={link.label}>
               <Link
-                to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
+                to={link.path}
                 onClick={() => setIsOpen(false)}
                 style={{
                   color: "#94a3b8",
-                  fontSize: 15,
+                  fontSize: 16,
                   fontWeight: 500,
                   textDecoration: "none",
-                  padding: "14px 0",
+                  padding: "16px 0",
                   transition: "color 0.2s",
                   display: "flex",
                   alignItems: "center",
-                  gap: 10,
+                  gap: 12,
                 }}
                 onMouseEnter={(e) => (e.currentTarget.style.color = "#38bdf8")}
                 onMouseLeave={(e) => (e.currentTarget.style.color = "#94a3b8")}>
                 <span
                   style={{
                     fontFamily: "'JetBrains Mono', monospace",
-                    fontSize: 10,
+                    fontSize: 11,
                     color: "#38bdf8",
                     opacity: 0.5,
-                    minWidth: 18,
+                    minWidth: 20,
                   }}>
                   0{index + 1}
                 </span>
-                {item}
+                {link.label}
               </Link>
               {index < NAV_LINKS.length - 1 && (
                 <hr
@@ -278,55 +296,59 @@ const Header = () => {
           ))}
         </div>
 
-        {/* Divider */}
+        {/* Structural Horizontal Separation Line */}
         <div
           style={{
-            margin: "24px 0",
-            borderTop: "0.5px solid rgba(56,189,248,0.1)",
+            margin: "28px 0",
+            borderTop: "0.5px solid rgba(56,189,248,0.12)",
           }}
         />
 
-        {/* Social icons */}
-        <div style={{ display: "flex", gap: 12 }}>
-          {SOCIAL_ICONS.map((Icon, idx) => (
+        {/* Mobile Environment Social Handles */}
+        <div style={{ display: "flex", gap: 14, paddingLeft: 4 }}>
+          {SOCIAL_LINKS.map(({ Icon, label, url }) => (
             <a
-              key={idx}
-              href="#"
-              aria-label={SOCIAL_LABELS[idx]}
+              key={label}
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={label}
               style={{
-                width: 36,
-                height: 36,
-                borderRadius: "50%",
-                border: "0.5px solid rgba(148,163,184,0.2)",
-                background: "rgba(56,189,248,0.04)",
+                width: 38,
+                height: 38,
+                borderRadius: "10px",
+                border: "0.5px solid rgba(148,163,184,0.15)",
+                background: "rgba(56,189,248,0.03)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 color: "#64748b",
-                transition: "all 0.15s",
+                transition: "all 0.2s",
                 textDecoration: "none",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.borderColor = "#38bdf8";
                 e.currentTarget.style.color = "#38bdf8";
+                e.currentTarget.style.transform = "translateY(-1px)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = "rgba(148,163,184,0.2)";
+                e.currentTarget.style.borderColor = "rgba(148,163,184,0.15)";
                 e.currentTarget.style.color = "#64748b";
+                e.currentTarget.style.transform = "translateY(0)";
               }}>
-              <Icon size={15} />
+              <Icon size={16} />
             </a>
           ))}
         </div>
 
-        {/* Hire Me */}
+        {/* Mobile Hire Me Action Button */}
         <a
           href="#contact"
           onClick={() => setIsOpen(false)}
           style={{
-            marginTop: 20,
-            padding: "10px 0",
-            borderRadius: 6,
+            marginTop: 28,
+            padding: "12px 0",
+            borderRadius: "8px",
             background: "#38bdf8",
             color: "#050b14",
             fontSize: 14,
@@ -335,11 +357,12 @@ const Header = () => {
             textDecoration: "none",
             display: "block",
             letterSpacing: "0.3px",
+            boxShadow: "0 4px 12px rgba(56,189,248,0.1)",
           }}>
           Hire Me
         </a>
 
-        {/* Bottom tag */}
+        {/* Operational System Footer Stamp */}
         <div style={{ marginTop: "auto", paddingTop: 24 }}>
           <p
             style={{
@@ -348,12 +371,12 @@ const Header = () => {
               color: "#334155",
               letterSpacing: 1,
             }}>
-            © 2025 DrishNet
+            © 2026 DrishNet
           </p>
         </div>
       </motion.div>
 
-      {/* Backdrop */}
+      {/* Dimmed Structural Background Blur Overlay */}
       {isOpen && (
         <div
           className="md:hidden"
@@ -361,9 +384,10 @@ const Header = () => {
           style={{
             position: "fixed",
             inset: 0,
-            background: "rgba(0,0,0,0.5)",
+            background: "rgba(0,0,0,0.6)",
             zIndex: 39,
-            backdropFilter: "blur(2px)",
+            backdropFilter: "blur(4px)",
+            WebkitBackdropFilter: "blur(4px)",
           }}
         />
       )}
