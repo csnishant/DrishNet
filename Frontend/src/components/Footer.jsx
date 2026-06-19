@@ -3,46 +3,56 @@ import { FaInstagram, FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-white pt-12 pb-6 px-6 md:px-20 border-t border-gray-800">
-      <div className="flex flex-col md:flex-row md:justify-between gap-8">
-        {/* Left: Logo & Copyright */}
-        <div>
-          <h1 className="text-2xl font-bold text-white mb-2">CREVONX</h1>
-          <p className="text-gray-400 text-sm">
-            © {new Date().getFullYear()} CREVONX. All rights reserved.
+    <footer className="bg-[#050507] text-white pt-16 pb-8 px-6 md:px-20 border-t border-white/[0.06]">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:justify-between items-start md:items-center gap-8">
+        {/* Left Side: Dynamic Branding & Copyright */}
+        <div className="space-y-2">
+          <h1 className="text-2xl font-extrabold tracking-tight text-white uppercase">
+            DRISHNET
+          </h1>
+          <p className="text-slate-500 text-xs font-light">
+            © {new Date().getFullYear()} DRISHNET. All rights reserved.
           </p>
         </div>
 
-        {/* Middle: Navigation Links */}
-        {/* <div className="flex flex-wrap gap-6 text-gray-400 text-sm">
-          <a href="#home" className="hover:text-indigo-500 transition">
+        {/* Middle Section: Optional Quick Navigation Links */}
+        <div className="flex flex-wrap gap-x-6 gap-y-2 text-slate-400 text-xs font-medium">
+          <a
+            href="#home"
+            className="hover:text-blue-400 transition-colors duration-200">
             Home
           </a>
-          <a href="#about" className="hover:text-indigo-500 transition">
-            About
-          </a>
-          <a href="#services" className="hover:text-indigo-500 transition">
+          <a
+            href="#services"
+            className="hover:text-blue-400 transition-colors duration-200">
             Services
           </a>
-          <a href="#projects" className="hover:text-indigo-500 transition">
+          <a
+            href="#projects"
+            className="hover:text-blue-400 transition-colors duration-200">
             Projects
           </a>
-          <a href="#contact" className="hover:text-indigo-500 transition">
+          <a
+            href="#contact"
+            className="hover:text-blue-400 transition-colors duration-200">
             Contact
           </a>
-        </div> */}
+        </div>
 
-        {/* Right: Social Icons */}
-        <div className="flex gap-4 text-gray-400 text-xl">
+        {/* Right Side: Re-targeted High-End Social Channels */}
+        <div className="flex items-center gap-5 text-slate-400 text-lg">
           <a
-            href="https://instagram.com/crevonx"
+            href="https://instagram.com/drishnet"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-pink-500">
+            className="hover:text-pink-500 transition-colors duration-200 active:scale-95"
+            aria-label="Instagram">
             <FaInstagram />
           </a>
-       
-          <a href="mailto:i.crevonx@email.com" className="hover:text-green-400">
+          <a
+            href="mailto:contact@drishnet.com"
+            className="hover:text-blue-400 transition-colors duration-200 active:scale-95"
+            aria-label="Email">
             <FaEnvelope />
           </a>
         </div>

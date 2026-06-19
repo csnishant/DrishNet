@@ -178,14 +178,14 @@ const Contact = () => {
       {/* Instagram direct link */}
       <div className="text-center mt-12 relative z-10">
         <a
-          href="https://instagram.com/crevonx"
+          href="https://instagram.com/drishnet"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 text-xs text-slate-400 hover:text-[#38bdf8] transition-colors border border-slate-800/80 bg-slate-900/40 px-4 py-2 rounded-xl">
           <FiInstagram size={14} className="text-pink-500" />
           <span>
             Or DM on Instagram:{" "}
-            <strong className="text-slate-200">@crevonx</strong>
+            <strong className="text-slate-200">@drishnet</strong>
           </span>
         </a>
       </div>
