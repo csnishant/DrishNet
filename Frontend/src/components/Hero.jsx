@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import {
   FaInstagram,
   FaWhatsapp,
@@ -9,7 +9,6 @@ import {
 import { FiMessageCircle } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import { TypeAnimation } from "react-type-animation";
-
 
 const TICKER_ITEMS = [
   "Digital Service",
@@ -22,7 +21,7 @@ const TICKER_ITEMS = [
 
 const LaptopSVG = () => (
   <svg
-    className="w-full block animate-float"
+    className="w-full h-auto block animate-float drop-shadow-[0_10px_30px_rgba(56,189,248,0.15)]"
     viewBox="0 0 360 220"
     xmlns="http://www.w3.org/2000/svg">
     <defs>
@@ -451,192 +450,123 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative pt-20 min-h-screen bg-[#050b14] text-white flex flex-col
-                 items-center justify-center px-6 md:px-20 py-16 overflow-hidden"
+      className="relative pt-24 pb-12 min-h-screen bg-[#050b14] text-white flex flex-col items-center justify-between overflow-hidden font-sans select-none"
       style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-      {/* Grid background */}
+      {/* Ambient Grid background */}
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-0 pointer-events-none opacity-60"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(56,189,248,0.04) 1px, transparent 1px)," +
-            "linear-gradient(90deg, rgba(56,189,248,0.04) 1px, transparent 1px)",
-          backgroundSize: "40px 40px",
+            "linear-gradient(rgba(56,189,248,0.05) 1px, transparent 1px)," +
+            "linear-gradient(90deg, rgba(56,189,248,0.05) 1px, transparent 1px)",
+          backgroundSize: "48px 48px",
         }}
       />
 
-      {/* Glow orb */}
-      <div
-        className="absolute animate-pulse-orb pointer-events-none"
-        style={{
-          width: 420,
-          height: 420,
-          borderRadius: "50%",
-          background:
-            "radial-gradient(circle, rgba(56,189,248,0.08) 0%, transparent 70%)",
-          top: "50%",
-          left: "50%",
-        }}
-      />
+      {/* Soft Glow Radial Center */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-sky-500/10 blur-[120px] rounded-full pointer-events-none animate-pulse-orb" />
 
-      {/* ── Main content ── */}
-      <div className="relative z-10 flex flex-col items-center gap-5 w-full max-w-2xl">
-        {/* Badge */}
-        <span
-          className="text-xs tracking-widest uppercase"
-          style={{
-            fontFamily: "'JetBrains Mono', monospace",
-            color: "#38bdf8",
-            background: "rgba(56,189,248,0.08)",
-            border: "0.5px solid rgba(56,189,248,0.3)",
-            padding: "4px 16px",
-            borderRadius: 20,
-          }}>
-          Hello, Welcome to
+      {/* Main Content Layout Container */}
+      <div className="relative z-10 flex flex-col items-center gap-6 w-full max-w-3xl px-6 my-auto text-center">
+        {/* Modern Pills Badging */}
+        <span className="font-mono text-xs font-medium tracking-widest text-sky-400 uppercase bg-sky-500/10 border border-sky-400/20 px-4 py-1.5 rounded-full backdrop-blur-sm shadow-sm transition-all hover:border-sky-400/40">
+          ⚡ Creative Engineering Studio
         </span>
 
-        {/* Brand name */}
-        <h1
-          className="text-5xl md:text-6xl font-bold text-center"
-          style={{ color: "#f0f9ff", letterSpacing: "-1px" }}>
-          Drish<span style={{ color: "#38bdf8" }}>Net</span>
+        {/* Master Brand Typography */}
+        <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-slate-50 transition-all">
+          Drish
+          <span className="text-sky-400 drop-shadow-[0_0_15px_rgba(56,189,248,0.3)]">
+            Net
+          </span>
         </h1>
 
-        {/* Laptop animation */}
-        <div className="w-full max-w-[360px]">
+        {/* Dynamic Vector Core Section */}
+        <div className="w-full max-w-[380px] px-2 transform transition-transform hover:scale-[1.02] duration-300">
           <LaptopSVG />
         </div>
 
-        {/* Typing tagline */}
-        <div className="text-center">
-          <p className="text-lg" style={{ color: "#94a3b8" }}>
-            We are
+        {/* Tagline Rotations */}
+        <div className="space-y-1">
+          <p className="text-sm uppercase font-mono tracking-wider text-slate-500">
+            We Architects of
           </p>
-          <h2
-            className="text-xl md:text-2xl font-semibold"
-            style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight font-mono h-9">
             <TypeAnimation
               sequence={[
-                "Creative Tech Partners",
-                2000,
-                "Website Builders",
-                2000,
-                "Automation Experts",
-                2000,
-                "Design & Reels Studio",
-                2000,
+                "Creative Tech Ecosystems",
+                2500,
+                "High-Conversion Websites",
+                2500,
+                "Custom Workflow Automation",
+                2500,
+                "Premium Visual Experiences",
+                2500,
               ]}
-              speed={50}
+              speed={55}
               repeat={Infinity}
               wrapper="span"
-              style={{ color: "#38bdf8" }}
+              className="text-sky-400"
             />
           </h2>
         </div>
 
-        {/* Description */}
-        <p
-          className="text-center max-w-md leading-relaxed"
-          style={{ color: "#64748b", fontSize: 14 }}>
-          A tech-powered creative studio by CSE students — websites, automation,
-          social content &amp; design. We build ideas into impact.
+        {/* Core Narrative / Value Prop */}
+        <p className="max-w-md text-sm md:text-base text-slate-400 leading-relaxed font-light">
+          A tech-powered creative studio engineered by Computer Science
+          innovators. We merge advanced web development, precise automation, and
+          elite visual asset design into real-world business growth.
         </p>
 
-        {/* CTAs */}
-        <div className="flex flex-wrap gap-3 justify-center">
+        {/* CTA Interactivity Matrix */}
+        <div className="flex flex-col sm:flex-row gap-3.5 w-full justify-center pt-2">
           <button
             onClick={handleScrollToContact}
-            className="flex items-center gap-2 px-6 py-3 font-semibold rounded-md
-                       transition-all duration-200 hover:-translate-y-0.5"
-            style={{
-              background: "#38bdf8",
-              color: "#050b14",
-              fontSize: 14,
-            }}>
-            Contact Us <FaPaperPlane className="text-sm" />
+            className="group flex items-center justify-center gap-2.5 px-7 py-3.5 bg-sky-400 hover:bg-sky-300 text-slate-950 font-semibold text-sm rounded-lg shadow-lg shadow-sky-500/10 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0">
+            Initiate Project
+            <FaPaperPlane className="text-xs transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </button>
+
           <button
             onClick={handleView}
-            className="px-6 py-3 font-medium rounded-md transition-all duration-200"
-            style={{
-              background: "transparent",
-              color: "#94a3b8",
-              border: "0.5px solid rgba(148,163,184,0.3)",
-              fontSize: 14,
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = "#38bdf8";
-              e.currentTarget.style.color = "#38bdf8";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = "rgba(148,163,184,0.3)";
-              e.currentTarget.style.color = "#94a3b8";
-            }}>
-            Package Info
+            className="px-7 py-3.5 bg-slate-900/50 hover:bg-slate-900 text-slate-300 hover:text-sky-400 border border-slate-800 hover:border-sky-500/30 text-sm font-medium rounded-lg backdrop-blur-sm transition-all duration-200">
+            Explore Packages & Pricing
           </button>
         </div>
 
-        {/* Social icons */}
-        <div className="flex gap-3">
+        {/* High Trust Social Presence Matrix */}
+        <div className="flex items-center gap-4 pt-4">
           {[
+            { Icon: FaLinkedin, label: "LinkedIn" },
+            { Icon: FaGithub, label: "GitHub" },
             { Icon: FaInstagram, label: "Instagram" },
             { Icon: FaWhatsapp, label: "WhatsApp" },
-            { Icon: FaGithub, label: "GitHub" },
-            { Icon: FaLinkedin, label: "LinkedIn" },
             { Icon: FiMessageCircle, label: "Message" },
           ].map(({ Icon, label }) => (
             <button
               key={label}
               aria-label={label}
-              className="w-9 h-9 rounded-full flex items-center justify-center
-                         transition-all duration-150"
-              style={{
-                border: "0.5px solid rgba(148,163,184,0.2)",
-                background: "rgba(56,189,248,0.04)",
-                color: "#64748b",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = "#38bdf8";
-                e.currentTarget.style.color = "#38bdf8";
-                e.currentTarget.style.background = "rgba(56,189,248,0.1)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = "rgba(148,163,184,0.2)";
-                e.currentTarget.style.color = "#64748b";
-                e.currentTarget.style.background = "rgba(56,189,248,0.04)";
-              }}>
-              <Icon size={15} />
+              className="w-10 h-10 rounded-xl flex items-center justify-center border border-slate-800/80 bg-slate-950/40 text-slate-500 transition-all duration-200 hover:text-sky-400 hover:border-sky-500/30 hover:bg-sky-500/5 hover:-translate-y-0.5">
+              <Icon size={17} />
             </button>
           ))}
         </div>
       </div>
 
-      {/* ── Scrolling ticker ── */}
-      <div
-        className="relative z-10 w-full mt-8 overflow-hidden"
-        style={{
-          borderTop: "0.5px solid rgba(56,189,248,0.12)",
-          borderBottom: "0.5px solid rgba(56,189,248,0.12)",
-          padding: "8px 0",
-        }}>
-        <div className="animate-ticker flex whitespace-nowrap">
-          {[...TICKER_ITEMS, ...TICKER_ITEMS].map((item, i) => (
-            <React.Fragment key={i}>
-              <span
-                className="px-4 uppercase tracking-widest"
-                style={{
-                  fontFamily: "'JetBrains Mono', monospace",
-                  fontSize: 11,
-                  color: "#38bdf8",
-                  opacity: 0.7,
-                }}>
-                {item}
-              </span>
-              <span style={{ color: "rgba(56,189,248,0.3)", padding: "0 4px" }}>
-                •
-              </span>
-            </React.Fragment>
-          ))}
+      {/* ── Seamless Horizontal Infinite Ticker Loop ── */}
+      <div className="w-full border-y border-slate-900 bg-slate-950/20 backdrop-blur-[2px] py-3.5 mt-12 overflow-hidden mask-fade-edges">
+        <div className="flex whitespace-nowrap min-w-full animate-ticker gap-12">
+          {/* Duplicate set twice to enable zero seamless snapping jumps */}
+          {[...TICKER_ITEMS, ...TICKER_ITEMS, ...TICKER_ITEMS].map(
+            (item, i) => (
+              <div key={i} className="flex items-center gap-12 shrink-0">
+                <span className="font-mono text-xs font-semibold tracking-widest text-sky-400/60 uppercase">
+                  {item}
+                </span>
+                <span className="text-slate-800 select-none font-sans">•</span>
+              </div>
+            ),
+          )}
         </div>
       </div>
     </section>
