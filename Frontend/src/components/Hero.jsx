@@ -535,20 +535,45 @@ const Hero = () => {
         </div>
 
         {/* High Trust Social Presence Matrix */}
+
+        {/* High Trust Social Presence Matrix */}
         <div className="flex items-center gap-4 pt-4">
           {[
-            { Icon: FaLinkedin, label: "LinkedIn" },
-            { Icon: FaGithub, label: "GitHub" },
-            { Icon: FaInstagram, label: "Instagram" },
-            { Icon: FaWhatsapp, label: "WhatsApp" },
-            { Icon: FiMessageCircle, label: "Message" },
-          ].map(({ Icon, label }) => (
-            <button
+            {
+              Icon: FaLinkedin,
+              label: "LinkedIn",
+              url: "https://linkedin.com/in/YOUR_LINKEDIN_USERNAME",
+            },
+            {
+              Icon: FaGithub,
+              label: "GitHub",
+              url: "https://github.com/YOUR_GITHUB_USERNAME",
+            },
+            {
+              Icon: FaInstagram,
+              label: "Instagram",
+              url: "https://instagram.com/drishnet",
+            },
+            {
+              Icon: FaWhatsapp,
+              label: "WhatsApp",
+              url: "https://wa.me/YOUR_PHONE_NUMBER",
+            },
+            {
+              Icon: FiMessageCircle,
+              label: "Message",
+              url: "mailto:YOUR_EMAIL@domain.com",
+            },
+          ].map(({ Icon, label, url }) => (
+            <a
               key={label}
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label={label}
               className="w-10 h-10 rounded-xl flex items-center justify-center border border-slate-800/80 bg-slate-950/40 text-slate-500 transition-all duration-200 hover:text-sky-400 hover:border-sky-500/30 hover:bg-sky-500/5 hover:-translate-y-0.5">
               <Icon size={17} />
-            </button>
+            </a>
           ))}
         </div>
       </div>
